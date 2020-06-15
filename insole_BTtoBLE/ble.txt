@@ -1,0 +1,60 @@
+====================
+// device -> app (data format)
+
+
+***Left Device Bluetooth
+{
+  "Pressure": {
+    "PL0": 0,
+    "PL1": 1,
+    "PL2": 2,
+    "PL3": 3,
+    "PL4": 4,
+    "PL5": 5,
+    "PL6": 6,
+    "PL7": 7,
+    "PL8": 8
+  },
+  "Cop": {
+    "x": 0,
+    "y": 1
+  },
+  "Temper": {
+    "TL0": 0,
+    "TL1": 1,
+    "TL2": 2,
+    "TL3": 3,
+    "TL4": 4
+  },
+  "type": "left"
+} 
+
+
+***Right Device Bluetooth
+{
+  "Pressure": {
+    "PR0": 0,
+    "PR1": 1,
+    "PR2": 2,
+    "PR3": 3,
+    "PR4": 4,
+    "PR5": 5,
+    "PR6": 6,
+    "PR7": 7,
+    "PR8": 8
+  },
+  "Cop": {
+    "x": 0,
+    "y": 1
+  },
+  "Temper": {
+    "TR0": 0,
+    "TR1": 1,
+    "TR2": 2,
+    "TR3": 3,
+    "TR4": 4
+  },
+  "type": "right"
+} 
+
+====================
