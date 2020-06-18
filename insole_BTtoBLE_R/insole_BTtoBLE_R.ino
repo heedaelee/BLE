@@ -49,8 +49,8 @@ class MyServerCallbacks: public BLEServerCallbacks {
 
 // 여기서 부터 원소스
 
-int insole_type = 0; //left insole
-//int insole_type = 1; //right insole
+//int insole_type = 0; //left insole
+int insole_type = 1; //right insole
 
 #include "BluetoothSerial.h"
 #include <ArduinoJson.h>
@@ -106,7 +106,7 @@ void dump(){
     StaticJsonDocument <1500> doc;
     
     JsonObject Pressure = doc.createNestedObject("Pressure");
-    JsonObject Cop =doc.createNestedObject("Cop");
+    JsonObject Cop = doc.createNestedObject("Cop");
     JsonObject Temper =doc.createNestedObject("Temper");
 
 void setup() {
@@ -174,12 +174,50 @@ void loop() {
 //    Serial.println(getMuxData(i));
     delay(10);
   }
-  char test[3320]; 
+
+  //블루투스로 보낼 total dataSet variable
+  char test[660]; 
+
+  //test
+  if(insole_type == 0){
+      Pressure["PL0"] = 4096;
+      Pressure["PL1"] = 4096;
+      Pressure["PL2"] = 4096;
+      Pressure["PL3"] = 4096;
+      Pressure["PL4"] = 4096;
+      Pressure["PL5"] = 4096;
+      Pressure["PL6"] = 4096;
+      Pressure["PL7"] = 4096;
+      Pressure["PL8"] = 4096;
+      Temper["TL0"] = 40;
+      Temper["TL1"] = 40;
+      Temper["TL2"] = 40;
+      Temper["TL3"] = 40;
+      Temper["TL4"] = 40;
+  }
+  if(insole_type == 1){
+      Pressure["PR0"] = 4096;
+      Pressure["PR1"] = 4096;
+      Pressure["PR2"] = 4096;
+      Pressure["PR3"] = 4096;
+      Pressure["PR4"] = 4096;
+      Pressure["PR5"] = 4096;
+      Pressure["PR6"] = 4096;
+      Pressure["PR7"] = 4096;
+      Pressure["PR8"] = 4096;
+      Temper["TR0"] = getMuxData(16-3);
+      Temper["TR1"] = getMuxData(16-6);
+      Temper["TR2"] = getMuxData(16-8);
+      Temper["TR3"] = getMuxData(16-11);
+      Temper["TR4"] = getMuxData(16-15);
+  }
+  Cop["x"] = 125;
+  Cop["y"] = 125;
 /*
   if(insole_type == 0){
       int a = getMuxData(16-4);
       Serial.println(a);
-      Pressur e["PL1"] = getMuxData(16-4);
+      Pressure["PL1"] = getMuxData(16-4);
       Pressure["PL2"] = getMuxData(16-5);
       Pressure["PL3"] = getMuxData(16-7);
       Pressure["PL4"] = getMuxData(16-9);
@@ -215,9 +253,8 @@ void loop() {
       //serializeJsonPretty(doc, jsondata); //JSON 이쁘게 보이는거
       //serializeJsonPretty(만들었던 jsonDocument, json넣을String 변수)
       // serializeJson(doc, jsondata); // JSON 노말하게 보이는것
-      //
-      
-  
+
+
   serializeJsonPretty(doc, Serial);
 //  Serial.println(" ");
 
@@ -229,7 +266,7 @@ void loop() {
         Serial.println(test);
         pCharacteristic->setValue(test); // This is a value of a single byte
         
-        /* std::string으로 통신한것, 변수 jsondata
+        /* std::string으로 통신 하려면, 변수 jsondata
         serializeJson(doc, jsondata); 
         Serial.println("test:"); 
         Serial.println(jsondata.c_str());
