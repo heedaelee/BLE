@@ -33,8 +33,8 @@ bool deviceConnected = false;
 bool oldDeviceConnected = false;
 
 // define the UUID for our Custom Service
-#define SERVICE_UUID        "8183d256-b358-4c62-a487-d2e7429bfc39"
-#define CHARACTERISTIC_UUID "61661f32-bc34-4513-a43d-20c2f3970829"
+#define SERVICE_UUID        "889f06ce-b1d3-11ea-b3de-0242ac130004"
+#define CHARACTERISTIC_UUID "95c0f4f2-b1d3-11ea-b3de-0242ac130004"
 
 class MyServerCallbacks: public BLEServerCallbacks {
     void onConnect(BLEServer* pServer) {
@@ -119,7 +119,7 @@ void setup() {
 
   // Create the BLE Device
   // BLE 사용할 이름으로 초기화
-  BLEDevice::init("L");
+  BLEDevice::init("R");
 
   // Create the BLE Server
   // BLEServer 인스턴스를 얻음. pServer로.
@@ -205,11 +205,11 @@ void loop() {
       Pressure["PR6"] = 4096;
       Pressure["PR7"] = 4096;
       Pressure["PR8"] = 4096;
-      Temper["TR0"] = getMuxData(16-3);
-      Temper["TR1"] = getMuxData(16-6);
-      Temper["TR2"] = getMuxData(16-8);
-      Temper["TR3"] = getMuxData(16-11);
-      Temper["TR4"] = getMuxData(16-15);
+      Temper["TR0"] = 40;
+      Temper["TR1"] = 40;
+      Temper["TR2"] = 40;
+      Temper["TR3"] = 40;
+      Temper["TR4"] = 40;
   }
   Cop["x"] = 125;
   Cop["y"] = 125;

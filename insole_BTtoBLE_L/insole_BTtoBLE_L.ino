@@ -205,11 +205,11 @@ void loop() {
       Pressure["PR6"] = 4096;
       Pressure["PR7"] = 4096;
       Pressure["PR8"] = 4096;
-      Temper["TR0"] = getMuxData(16-3);
-      Temper["TR1"] = getMuxData(16-6);
-      Temper["TR2"] = getMuxData(16-8);
-      Temper["TR3"] = getMuxData(16-11);
-      Temper["TR4"] = getMuxData(16-15);
+      Temper["TR0"] = 40;
+      Temper["TR1"] = 40;
+      Temper["TR2"] = 40;
+      Temper["TR3"] = 40;
+      Temper["TR4"] = 40;
   }
   Cop["x"] = 125;
   Cop["y"] = 125;
